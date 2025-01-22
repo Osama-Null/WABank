@@ -28,7 +28,7 @@ namespace WABank.Models
         // ------------------- Join Usr & Role
         [DisplayName("User ID")]
         [ForeignKey("User")]
-        public String UserId { get; set; } // Foreign Key to User
+        public string UserId { get; set; } // Foreign Key to User
         public AppUser? User { get; set; } // Navigation property
     }
 }

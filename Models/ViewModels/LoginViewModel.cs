@@ -5,7 +5,7 @@ namespace WABank.Models.ViewModels
 {
     public class LoginViewModel
     {
-        [DisplayName("Soso")]
+        [DisplayName("Email")]
         [Required(ErrorMessage = "*Enter email")]
         [EmailAddress]
         [MinLength(5)]

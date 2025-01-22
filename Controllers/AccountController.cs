@@ -62,22 +62,20 @@ namespace WABank.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(RegisterLoginViewModel model)
         {
+            ModelState.Remove("RegisterVM");
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View("RegisterLogin", model);
             }
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+            var result = await _signInManager.PasswordSignInAsync(model.LoginVM.Email, model.LoginVM.Password, model.LoginVM.RememberMe, false);
             if (!result.Succeeded)
             {
-                ModelState.AddModelError("", "Invalid email or password.");
-                return View(model);
+                ModelState.AddModelError("LoginError", "Invalid email or password.");
+                return View("RegisterLogin", model);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("RegisterLogin");
         }
-
-
-
     }
 }

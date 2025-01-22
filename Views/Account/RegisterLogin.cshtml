@@ -73,6 +73,9 @@
                 <!--Register Form-->
                 <div class="styled-form register-form">
                     <form method="post" asp-action="Register" asp-controller="Account">
+                        <div class="text-danger">
+                            @Html.ValidationMessage("LoginError")
+                        </div>
                         <div class="form-group">
                             <span class="adon-icon"><span class="fa fa-envelope-o"></span></span>
                             <input asp-for="RegisterVM.Email" placeholder="Email Address*">
